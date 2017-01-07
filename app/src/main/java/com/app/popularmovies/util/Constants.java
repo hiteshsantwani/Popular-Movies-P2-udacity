@@ -1,15 +1,16 @@
 package com.app.popularmovies.util;
 
 /**
- * Created by hitesh on 26-Dec-15.
+ * Created by Hitesh on 26-Dec-15.
  */
 public interface Constants {
 
-    public String REQUEST_BASE_URL = "http://api.themoviedb.org/3/discover/movie";
+    public String REQUEST_BASE_URL_Popular = "https://api.themoviedb.org/3/movie/popular";
+    public String REQUEST_BASE_URL_Rated = "https://api.themoviedb.org/3/movie/top_rated";
     public String TRAILER_REVIEWS_BASE_URL = "http://api.themoviedb.org/3/movie";
     public String YOU_TUBE_IMAGE_BASE_URL = "http://i3.ytimg.com/vi/";
     public String YOU_TUBE_BASE_URL = "http://www.youtube.com/watch?v=";
-    public String API_KEY = "YOUR_API_KEY";
+    public String API_KEY = "5e796a75143fae639f7eb2716670fc0e";
 
     public String IMAGE_PATH_BASE_URL = "http://image.tmdb.org/t/p/w185/";
     public String BACKDROP_IMAGE_PATH_BASE_URL = "http://image.tmdb.org/t/p/w342/";

@@ -28,6 +28,7 @@ public class MovieActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         if (findViewById(R.id.detailContainer) != null) {
@@ -35,9 +36,12 @@ public class MovieActivity extends AppCompatActivity {
         } else {
             mTwoPane = false;
         }
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, PopularMovieFragment.newInstance())
+        if(savedInstanceState == null)
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, getFragmentType(0))
                 .commit();
+        else
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, getFragmentType((int)savedInstanceState.get("criteria")))
+                    .commit();
     }
 
     @Override
@@ -82,5 +86,11 @@ public class MovieActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         itemSelected = -1;
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle state) {
+        super.onSaveInstanceState(state);
+        state.putInt("criteria", itemSelected);
     }
 }

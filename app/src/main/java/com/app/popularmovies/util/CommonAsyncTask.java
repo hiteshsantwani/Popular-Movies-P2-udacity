@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Created by hitesh on 26-Dec-15.
+ * Created by Hitesh on 26-Dec-15.
  */
 public class CommonAsyncTask extends AsyncTask<String,Void,Object>{
     private Fragment fragment;
@@ -40,16 +40,17 @@ public class CommonAsyncTask extends AsyncTask<String,Void,Object>{
         OkHttpClient client = new OkHttpClient();
         client.networkInterceptors().add(new StethoInterceptor());
         if (request_type == Constants.MOST_POPULAR_REQUEST) {
-            builder = Uri.parse(Constants.REQUEST_BASE_URL).buildUpon()
+            builder = Uri.parse(Constants.REQUEST_BASE_URL_Popular).buildUpon()
                     .appendQueryParameter("api_key", Constants.API_KEY)
-                    .appendQueryParameter("page", page)
-                    .appendQueryParameter("sort_by", "popularity.desc");
+                    .appendQueryParameter("page", page).appendQueryParameter("language", "en-US");
+
 
         } else if (request_type == Constants.TOP_RATED_REQUEST) {
-            builder = Uri.parse(Constants.REQUEST_BASE_URL).buildUpon()
+            builder = Uri.parse(Constants.REQUEST_BASE_URL_Rated).buildUpon()
                     .appendQueryParameter("api_key", Constants.API_KEY)
                     .appendQueryParameter("page", page)
-                    .appendQueryParameter("sort_by", "vote_average.desc");
+                    .appendQueryParameter("page", page).appendQueryParameter("language", "en-US");
+
 
         } else if (request_type == Constants.VIDEO_TRAILER_REQUEST) {
             String movieId = fragment.getArguments().getString(TrailerFragment.MOVIE_ID);
